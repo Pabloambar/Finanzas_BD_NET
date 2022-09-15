@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e24f70e0c3194079b0b21a1e72905780" Name="Diagram1">
+        <EntityTypeShape EntityType="FINANZASModel.PagosMensuales" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FINANZASModel.GastosVarios" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="FINANZASModel.Notas" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FINANZASModel.Comprobantes" Width="1.5" PointX="5.625" PointY="2.875" />
+        <EntityTypeShape EntityType="FINANZASModel.AfipSueldo" Width="1.5" PointX="3.25" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

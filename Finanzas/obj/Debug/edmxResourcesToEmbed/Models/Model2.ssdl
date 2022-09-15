@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FINANZASModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AfipSueldo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha de pago" Type="datetime" />
+    <Property Name="Remuneración" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Período" Type="varchar" MaxLength="50" />
+    <Property Name="Horas trabajadas" Type="int" />
+    <Property Name="Horas extras" Type="int" />
+    <Property Name="Antiguedad" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Descuento" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="S.A.C" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Conceptos vaios" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Total Remunerado" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Número de VEP" Type="bigint" />
+    <Property Name="Comprobante_VEP" Type="varbinary(max)" />
+    <Property Name="Comprobante_Recibo_Sueldo" Type="varbinary(max)" />
+    <Property Name="Nota" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GastosVarios">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha de carga" Type="datetime" />
+    <Property Name="Mes" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre/Tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Notas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Fecha de Carga" Type="datetime" />
+    <Property Name="Notas" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="PagosMensuales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha de carga" Type="datetime" />
+    <Property Name="Mes" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre/Tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityContainer Name="FINANZASModel1StoreContainer">
+    <EntitySet Name="AfipSueldo" EntityType="Self.AfipSueldo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GastosVarios" EntityType="Self.GastosVarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notas" EntityType="Self.Notas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagosMensuales" EntityType="Self.PagosMensuales" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

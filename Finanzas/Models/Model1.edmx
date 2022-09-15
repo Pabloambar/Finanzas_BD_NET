@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FINANZASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AfipSueldo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha de pago" Type="datetime" />
+          <Property Name="Período" Type="varchar" MaxLength="50" />
+          <Property Name="Horas trabajadas" Type="int" />
+          <Property Name="Horas extras" Type="int" />
+          <Property Name="Antiguedad" Type="int" />
+          <Property Name="Descuento" Type="float" />
+          <Property Name="S.A.C" Type="float" />
+          <Property Name="Conceptos vaios" Type="float" />
+          <Property Name="Total Remunerado" Type="float" />
+          <Property Name="Número de VEP" Type="bigint" />
+          <Property Name="Comprobante_Recibo_Sueldo" Type="varbinary(max)" />
+          <Property Name="Nota" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comprobantes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mes" Type="varchar" MaxLength="50" />
+          <Property Name="VEP" Type="varbinary(max)" />
+          <Property Name="ReciboDeSueldo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="GastosVarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha de carga" Type="datetime" />
+          <Property Name="Mes" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre/Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Notas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Fecha de Carga" Type="datetime" />
+          <Property Name="Notas" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PagosMensuales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha de carga" Type="datetime" />
+          <Property Name="Mes" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre/Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Comprobantes" Type="varbinary(max)" />
+          <Property Name="NombreReal" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="FINANZASModelStoreContainer">
+          <EntitySet Name="AfipSueldo" EntityType="Self.AfipSueldo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comprobantes" EntityType="Self.Comprobantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GastosVarios" EntityType="Self.GastosVarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notas" EntityType="Self.Notas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagosMensuales" EntityType="Self.PagosMensuales" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FINANZASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PagosMensuales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_de_carga" Type="DateTime" Precision="3" />
+          <Property Name="Mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Comprobantes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NombreReal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="FINANZASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PagosMensuales" EntityType="Self.PagosMensuales" />
+          <EntitySet Name="GastosVarios" EntityType="FINANZASModel.GastosVarios" />
+          <EntitySet Name="Notas" EntityType="FINANZASModel.Notas" />
+          <EntitySet Name="Comprobantes" EntityType="FINANZASModel.Comprobantes" />
+          <EntitySet Name="AfipSueldo" EntityType="FINANZASModel.AfipSueldo" />
+        </EntityContainer>
+        <EntityType Name="GastosVarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_de_carga" Type="DateTime" Precision="3" />
+          <Property Name="Mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Notas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_de_Carga" Type="DateTime" Precision="3" />
+          <Property Name="Notas1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Comprobantes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VEP" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ReciboDeSueldo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AfipSueldo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_de_pago" Type="DateTime" Precision="3" />
+          <Property Name="Período" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Horas_trabajadas" Type="Int32" />
+          <Property Name="Horas_extras" Type="Int32" />
+          <Property Name="Antiguedad" Type="Int32" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="S_A_C" Type="Double" />
+          <Property Name="Conceptos_vaios" Type="Double" />
+          <Property Name="Total_Remunerado" Type="Double" />
+          <Property Name="Número_de_VEP" Type="Int64" />
+          <Property Name="Comprobante_Recibo_Sueldo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Nota" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FINANZASModelStoreContainer" CdmEntityContainer="FINANZASEntities">
+          <EntitySetMapping Name="PagosMensuales">
+            <EntityTypeMapping TypeName="FINANZASModel.PagosMensuales">
+              <MappingFragment StoreEntitySet="PagosMensuales">
+                <ScalarProperty Name="NombreReal" ColumnName="NombreReal" />
+                <ScalarProperty Name="Comprobantes" ColumnName="Comprobantes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha_de_carga" ColumnName="Fecha de carga" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Nombre_Tipo" ColumnName="Nombre/Tipo" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GastosVarios">
+            <EntityTypeMapping TypeName="FINANZASModel.GastosVarios">
+              <MappingFragment StoreEntitySet="GastosVarios">
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Nombre_Tipo" ColumnName="Nombre/Tipo" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Fecha_de_carga" ColumnName="Fecha de carga" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notas">
+            <EntityTypeMapping TypeName="FINANZASModel.Notas">
+              <MappingFragment StoreEntitySet="Notas">
+                <ScalarProperty Name="Notas1" ColumnName="Notas" />
+                <ScalarProperty Name="Fecha_de_Carga" ColumnName="Fecha de Carga" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comprobantes">
+            <EntityTypeMapping TypeName="FINANZASModel.Comprobantes">
+              <MappingFragment StoreEntitySet="Comprobantes">
+                <ScalarProperty Name="ReciboDeSueldo" ColumnName="ReciboDeSueldo" />
+                <ScalarProperty Name="VEP" ColumnName="VEP" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AfipSueldo">
+            <EntityTypeMapping TypeName="FINANZASModel.AfipSueldo">
+              <MappingFragment StoreEntitySet="AfipSueldo">
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Comprobante_Recibo_Sueldo" ColumnName="Comprobante_Recibo_Sueldo" />
+                <ScalarProperty Name="Número_de_VEP" ColumnName="Número de VEP" />
+                <ScalarProperty Name="Total_Remunerado" ColumnName="Total Remunerado" />
+                <ScalarProperty Name="Conceptos_vaios" ColumnName="Conceptos vaios" />
+                <ScalarProperty Name="S_A_C" ColumnName="S.A.C" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Antiguedad" ColumnName="Antiguedad" />
+                <ScalarProperty Name="Horas_extras" ColumnName="Horas extras" />
+                <ScalarProperty Name="Horas_trabajadas" ColumnName="Horas trabajadas" />
+                <ScalarProperty Name="Período" ColumnName="Período" />
+                <ScalarProperty Name="Fecha_de_pago" ColumnName="Fecha de pago" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

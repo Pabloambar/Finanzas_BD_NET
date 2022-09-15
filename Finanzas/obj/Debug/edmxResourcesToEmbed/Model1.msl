@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FINANZASModelStoreContainer" CdmEntityContainer="FINANZASEntities">
+    <EntitySetMapping Name="PagosMensuales">
+      <EntityTypeMapping TypeName="FINANZASModel.PagosMensuales">
+        <MappingFragment StoreEntitySet="PagosMensuales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fecha_de_carga" ColumnName="Fecha de carga" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Nombre_Tipo" ColumnName="Nombre/Tipo" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
